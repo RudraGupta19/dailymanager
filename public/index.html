@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Calendar Tasks</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <header class="app-header">
+      <button id="menuToggle" class="hamburger" aria-label="Menu">☰</button>
+      <h1 class="brand">Calendar Tasks</h1>
+      <div class="controls">
+        <button id="rangeBtn">Range</button>
+        <button id="addTask">Add Task</button>
+      </div>
+    </header>
+
+    <div id="rangePopover" class="popover hidden">
+      <div class="popover-header">
+        <div>Set Range</div>
+        <button id="closePopover">×</button>
+      </div>
+      <div class="popover-body">
+        <label>Start <input type="date" id="rangeStart" /></label>
+        <label>End <input type="date" id="rangeEnd" /></label>
+        <button id="rangeApply">Apply</button>
+      </div>
+    </div>
+
+    <div id="navDrawer" class="drawer">
+      <div class="drawer-header">
+        <div class="drawer-title">Menu</div>
+        <button id="drawerClose">×</button>
+      </div>
+      <div class="drawer-body">
+        <input type="file" id="csvFile" accept=".csv" />
+        <button id="importCsv">Import CSV</button>
+        <button id="downloadAllCsv">Download Combined CSV</button>
+        <button id="openLater">Later</button>
+      </div>
+    </div>
+    <div id="drawerBackdrop" class="backdrop hidden"></div>
+    <div id="csvDrop" class="dropzone">Drop CSV here or click to choose</div>
+
+    <section id="dashboard" class="dashboard">
+      <div id="quickStats" class="widget"></div>
+      <div id="quickActions" class="widget"></div>
+    </section>
+
+    <section id="today" class="today"></section>
+    <section id="month" class="month"></section>
+
+    <main id="calendar" class="calendar"></main>
+
+    <div id="modal" class="modal hidden">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 id="modalTitle"></h2>
+          <button id="closeModal">×</button>
+        </div>
+        <div id="modalBody"></div>
+        <div class="modal-footer">
+          <button id="applyModal">Apply</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="/env.js"></script>
+    <script type="module" src="/supabase.js"></script>
+    <script src="/app.js"></script>
+  </body>
+</html>

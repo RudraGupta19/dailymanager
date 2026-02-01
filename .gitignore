@@ -1,0 +1,6 @@
+node_modules/
+.DS_Store
+.env
+public/env.js
+data/*.json
+vercel/*.log
