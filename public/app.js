@@ -19,7 +19,7 @@ function loadTasks() {
 function saveTasks() {
   localStorage.setItem(storageKey, JSON.stringify(state.tasks));
   if (window.sb && window.sb.client) {
-    window.sb.saveAll(state.tasks);
+    window.sb.saveAll(state.tasks).catch(() => syncServer(true));
   } else {
     syncServer(true);
   }

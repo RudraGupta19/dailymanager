@@ -29,13 +29,15 @@ async function saveAll(tasks) {
   if (!client) return;
   const rows = tasks.map(t => ({ id: t.id, title: t.title, date: t.date, notes: t.notes || null, completed: !!t.completed }));
   if (rows.length === 0) return;
-  await client.from("tasks").upsert(rows, { onConflict: "id" });
+  const { error } = await client.from("tasks").upsert(rows, { onConflict: "id" });
+  if (error) throw error;
 }
 
 async function deleteTask(id) {
   await ensureClient();
   if (!client) return;
-  await client.from("tasks").delete().eq("id", id);
+  const { error } = await client.from("tasks").delete().eq("id", id);
+  if (error) throw error;
 }
 
 async function loadLater() {
@@ -50,7 +52,8 @@ async function saveLater(items) {
   if (!client) return;
   const rows = items.map(x => ({ id: x.id, title: x.title, notes: x.notes || null }));
   if (rows.length === 0) return;
-  await client.from("later").upsert(rows, { onConflict: "id" });
+  const { error } = await client.from("later").upsert(rows, { onConflict: "id" });
+  if (error) throw error;
 }
 
 window.sb = { client, loadTasks, saveAll, deleteTask, loadLater, saveLater };

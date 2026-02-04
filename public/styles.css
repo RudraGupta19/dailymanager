@@ -328,3 +328,36 @@ body.panel-open .today,
 body.panel-open .month,
 body.panel-open .calendar { margin-left: var(--panelW); width: calc(100% - var(--panelW)); }
 .editor-card .rollover-grid { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+
+/* Responsive */
+@media (max-width: 768px) {
+  .app-header { padding: 10px 12px; }
+  .brand { font-size: 18px; }
+  .controls { gap: 6px; }
+  .calendar { grid-template-columns: 1fr; gap: 12px; padding: 12px; }
+  .today { padding: 12px; }
+  .split { grid-template-columns: 1fr; gap: 12px; }
+  .dashboard { padding: 0 12px 12px; grid-template-columns: 1fr; gap: 12px; }
+  .stats-grid { grid-template-columns: repeat(2, 1fr); }
+  .widget-title { font-size: 16px; }
+  .widget-header { flex-wrap: wrap; gap: 8px; }
+  .day-header { flex-wrap: wrap; gap: 8px; }
+  .day-actions { flex-wrap: wrap; gap: 6px; }
+  .month { padding: 0 12px 12px; }
+  .month-grid { gap: 4px; }
+  .month-cell { min-height: 64px; padding: 6px; }
+  .modal.panel .modal-content { width: 96vw; max-height: 92vh; }
+  body.panel-open { --panelW: 96vw; }
+  body.panel-open #csvDrop,
+  body.panel-open .dashboard,
+  body.panel-open .today,
+  body.panel-open .month,
+  body.panel-open .calendar { margin-left: 0; width: 100%; }
+}
+
+@media (max-width: 420px) {
+  .btn { height: 30px; padding: 0 10px; font-size: 12px; }
+  .btn-sm { height: 26px; padding: 0 8px; font-size: 11px; }
+  input[type="date"], input[type="text"], input[type="tel"], select { padding: 8px 10px; }
+  .task { gap: 8px; }
+}
